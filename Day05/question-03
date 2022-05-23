@@ -1,0 +1,51 @@
+Question 03 : LeetCode 54. Spiral Matrix
+Solution : 
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        
+        int minc=0;
+        int minr=0;
+        int maxr=matrix.length-1;
+        int maxc=matrix[0].length-1;
+        List<Integer>list=new ArrayList<>();
+        int count=0;
+        int limit=matrix[0].length*matrix.length;
+        
+        //element repeate na ho
+        while(count<limit){ 
+     //upper
+        for(int i=minc,j=minc;j<=maxc&&count<limit;j++){
+            list.add(matrix[i][j]);
+            count++;
+        }
+            minr++;
+            
+             
+           //right
+        for(int i=minr, j=maxc;i<=maxr&&count<limit;i++){
+            list.add(matrix[i][j]);
+            count++;
+        }
+           maxc--;     
+             //bottom
+            for(int i=maxr, j=maxc;j>=minc&&count<limit;j--){
+                list.add(matrix[i][j]);
+                count++;
+                
+            }
+        maxr--;
+                
+             //left
+        for(int i=maxr, j=minc;i>=minr&&count<limit;i--){
+            list.add(matrix[i][j]);
+            count++;
+        }
+        minc++;
+            
+        
+        
+    }
+        return list;
+        
+    }
+}
